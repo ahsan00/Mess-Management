@@ -1,0 +1,130 @@
+// Place all the styles related to the totalcalculations controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.background1{
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 350px!important;
+  height: 184px;
+  word-wrap: break-word;
+  background-color: #22beef !important;
+  background-clip: border-box;
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: .25rem;
+  margin-left: 5px;
+  margin-top: 5px;
+}
+
+.card1 {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 350px !important;
+  height: 184px;
+  word-wrap: break-word;
+  background-clip: border-box;
+  border: 1px solid
+  rgba(0,0,0,.125);
+  border-radius: .25rem;
+  background: #a2d200 !important;
+  margin-left: 5px;
+  margin-top: 5px;
+}
+
+
+.card2 {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 350px !important;
+  height: 184px;
+  word-wrap: break-word;
+  background-color: #8e44ad !important;
+  background-clip: border-box;
+  border: 1px solid
+  rgba(0,0,0,.125);
+  border-radius: .25rem;
+  margin-left: 5px;
+  margin-top: 5px;
+}
+
+
+.card3 {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 350px !important;
+  height: 184px;
+  word-wrap: break-word;
+  background-color: #ff4a43 !important;
+  background-clip: border-box;
+  border: 1px solid
+  rgba(0,0,0,.125);
+  border-radius: .25rem;
+  margin-left: 5px;
+  margin-top: 5px;
+}
+
+
+
+background2{
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 350px!important;
+  word-wrap: break-word;
+  background-color: #a2d200 !important;
+  background-clip: border-box;
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: .25rem; ;
+}
+.aaa{
+  margin-top: 20px;
+}
+
+
+
+.body{
+  margin-top: 40px;
+  border-top: 25px solid #fff;
+   border-bottom: 25px solid #fff;
+
+
+}
+h5{
+  text-align: center;
+}
+p{
+  text-align: center;
+  font-size: 80px ;
+
+}
+.header{
+  text-align: center;
+}

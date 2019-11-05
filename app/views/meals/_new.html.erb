@@ -1,0 +1,56 @@
+
+
+<div class="modal-header">
+  <h4 class="modal-title" id="myModalLabel">Add Meal</h4>
+  <button type="button" class="close" data-dismiss="modal">x</button>
+
+</div>
+
+<div class="modal-body">
+      <div>
+        <label>Date:</label>
+        <label><%= @date %></label>
+      </div>
+   <%= form_tag meals_path, method: 'post',remote: true do  %>
+
+
+        <div class = "form-group">
+          <div class="container">
+            <div class="row">
+
+              <%@members.each do |member| %>
+
+                      <div class="col-sm col-md">
+                        <label><%= member.name %></label>
+                      </div>
+
+                      <div class="col-sm col-md">
+                        <%= text_field_tag 'quantity[]',params[:quantity],class: "form-inline"  %>
+                      </div>
+                <%= hidden_field_tag  'member_id[]', member.id %>
+              <%end %>
+
+            </div>
+
+          </div>
+        </div>
+
+  <!--                <div class="form-group">-->
+  <!--              <label><%#= member.name %></label>-->
+    <%#= text_field_tag 'quantity[]',params[:quantity],class: "form-control",:id =>"quantity" %>
+
+
+      <%= hidden_field_tag :meal_day,@day %>
+      <%= hidden_field_tag :month, @month%>
+      <%= hidden_field_tag :year,@year %>
+      <%= hidden_field_tag :date,@date %>
+
+    <%= submit_tag "Save", class: "btn btn-primary" %>
+
+    <%end %>
+  </div>
+
+<div class="modal-footer">
+
+</div>
+

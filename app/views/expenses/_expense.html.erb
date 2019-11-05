@@ -1,0 +1,8 @@
+<tr id= "expense-day-<%= expense.id %>">
+  <td><%= expense.id %></td>
+  <td><%= expense.date %></td>
+  <td><%= expense.purpose %></td>
+  <td class = "amount"><%= expense.amount %></td>
+  <td><%=  link_to  'Edit Expense',edit_expense_path(id: expense.id),{remote: true, data: { toggle: 'modal', target: '#modal-window' }, class: 'btn btn-primary btn-lg'}%></td>
+
+</tr>

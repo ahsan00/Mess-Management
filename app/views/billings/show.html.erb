@@ -1,0 +1,141 @@
+<!--<div>-->
+<!--  <div id="Voucher">-->
+<!--    <div>-->
+<!--      <label>Voucher NO....</label>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--      <label>       Date............</label>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div id="logo">-->
+<%#= image_tag 'syftet-logo.png', alt: 'The Pragmatic Bookshelf' %>
+<!--  </div>-->
+
+
+<!--</div>-->
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <%= link_to 'DOWNLOAD PDF', billing_path(id: 1, month: params[:month], year: params[:year], format: :pdf), class: "btn btn-outline-success my-2 my-sm-0" %>
+    </div>
+    <div class="col-sm">
+      <button onclick="printPage()">Print</button>
+    </div>
+
+  </div>
+</div>
+
+
+<div class="book">
+<div id="test">
+  <div class="page">
+
+  <div class="margin">
+
+    <div id="logo">
+      <%= image_tag 'syftet-logo.png', alt: 'The Pragmatic Bookshelf' %>
+    </div>
+
+
+    <div id="Voucher">
+
+          <div>
+            <label>Voucher NO....</label>
+          </div>
+          <div>
+            <label>       Date............</label>
+          </div>
+    </div>
+
+
+
+  </div>
+
+
+
+
+
+
+<!--  <button onclick="printPage()">sdfsad</button>-->
+  <%#= link_to 'print', '#', :onclick => 'printPage();' %>
+
+
+
+<!--  <div class="pdf">-->
+    <%#= link_to 'DOWNLOAD PDF', billing_path(id: 1, month: params[:month], year: params[:year], format: :pdf), class: "btn btn-outline-success my-2 my-sm-0" %>
+<!--  </div>-->
+
+<h2 id="receipt">RECEIPT VOUCHER</h2>
+  <table class="table table-striped">
+
+    <thead>
+    <th scope="col">Date</th>
+    <th scope="col">Purpose</th>
+    <th scope="col">Amount</th>
+    </thead>
+
+
+    <tbody>
+
+    <% @unpaids.each do |unpaid| %>
+      <tr>
+        <td><%= unpaid.date %></td>
+        <td><%= unpaid.purpose %></td>
+        <td><%= unpaid.amount %></td>
+      </tr>
+
+    <% end %>
+
+    <tr>
+      <td>------------</td>
+      <td>------------</td>
+      <td>------------</td>
+    </tr>
+    <tr>
+      <td>------------</td>
+      <td>------------</td>
+      <td>------------</td>
+    </tr>
+    </tbody>
+
+    <tfoot>
+        <tr>
+          <td></td>
+          <td>Total</td>
+          <td><%= @totalunpaid %></td>
+        </tr>
+
+    </tfoot>
+
+  </table>
+
+    <div class="recepitunder">
+
+      <div class="first">
+        <label>Prepared by...........</label>
+        <label>Signature.............</label>
+        <label>Date..................</label>
+      </div>
+
+      <div class="second">
+        <label>Approved by............</label>
+        <label>Signature..............</label>
+        <label>Date...................</label>
+      </div>
+
+    </div>
+
+
+
+</div>
+</div>
+</div>
+<script>
+    function printPage() {
+        console.log('kjgkj');
+        window.print();
+        console.log('jghjghg');
+    }
+</script>
+

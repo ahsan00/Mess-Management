@@ -1,0 +1,69 @@
+ <%= form_tag '', method: 'get' do  %>
+   <%= select_year(@year.to_i, {:prompt => "Year",:start_year => DateTime.now.year,:end_year => DateTime.now.year - 7},{:name => 'year', :id => 'start-year'}) %>
+   <%= select_month(@month.to_i, {:prompt => "month",use_short_month: true},{:name => 'month', :id => 'start-month'}) %>
+   <%= submit_tag "Search" %>
+  <%end %>
+
+
+
+  <table class="table table-striped">
+
+    <thead>
+        <tr>
+          <th scope="col">Member Serial:</th>
+           <th scope="col">Member Name</th>
+          <th scope="col">Balance </th>
+          <th scope="col">Action</th>
+        </tr>
+
+    </thead>
+
+    <tbody>
+       <%#@members.each do |member| %>
+<!--          <tr>-->
+<!--            <td><%#=member.id %></td>-->
+<!--            <td><%#=member.name %></td>-->
+<!--            <td><%#= @membertotalbalnce[member.id].present? ? @membertotalbalnce[member.id] :0 %></td>-->
+<!--            <td>-->
+              <%#= link_to  'Add Balance', new_deposit_path( :id =>member.id,:month => params[:month],:year => params[:year]),{:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-primary btn-lg'}  %>
+<!--            </td>-->
+<!--          </tr>-->
+      <%#end %>
+       <% @members.each do |member| %>
+        <%= render 'balance_item',member: member,membertotalbalnce: @membertotalbalnce[member.id] %>
+
+       <%end %>
+
+
+
+    </tbody>
+
+     <tfoot>
+      <tr id = "Totalbalance">
+        <td>Total deposit</td>
+        <td></td>
+        <td class="Total" ></td>
+      </tr>
+
+     </tfoot>
+
+  </table>
+
+  <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content modal-width "></div>
+    </div>
+  </div>
+
+
+ <script>
+     $(document).ready(function(){
+         var sum = 0;
+         $('tbody').find('tr').each(function(){
+             var balance =parseInt( $(this).find('.balance').text())
+             sum+=balance;
+         }) ;
+         $("#Totalbalance .Total").html(sum)
+     });
+
+ </script>

@@ -1,0 +1,79 @@
+
+
+<%= form_tag '', method: 'get' do  %>
+  <%= select_year(@year.to_i, {:prompt => "Year",:start_year => DateTime.now.year,:end_year => DateTime.now.year - 7},{:name => 'year', :id => 'start-year'}) %>
+  <%= select_month(@month.to_i, {:prompt => "month",use_short_month: true},{:name => 'month', :id => 'start-month'}) %>
+  <%= submit_tag "Search" %>
+<%end %>
+
+<div class="">
+  <label>Meal Rate:</label>
+  <h1><%= @mealrate[0].round(2)%></h1>
+
+</div>
+
+
+
+<table class="table table-striped">
+
+  <thead>
+
+  <tr>
+    <th scope="col">Name</th>
+    <th scope="col">Total meal</th>
+    <th scope="col">Total Expense</th>
+    <th scope="col">Total Deposit</th>
+    <th scope="col">Status</th>
+  </tr>
+
+  </thead>
+
+  <tbody>
+<%@members.each do |member| %>
+
+    <tr id="total-<%= member.id %>" >
+
+      <td><%= member.name %></td>
+
+      <td><%= @membertoalmeal[member.id] %></td>
+
+      <td><%= (@membertoalmeal[member.id]*@mealrate[0].to_f).round(2) %></td>
+
+      <td><%= @mebertotaldeposit[member.id] %></td>
+
+<%if @membertoalmeal[member.id]*@mealrate[0].to_f > @mebertotaldeposit[member.id] %>
+
+        <td><%= (@mebertotaldeposit[member.id]- @membertoalmeal[member.id]*@mealrate[0].to_f).round(2) %></td>
+
+<%else %>
+
+        <td ><%= (@mebertotaldeposit[member.id]- @membertoalmeal[member.id]*@mealrate[0].to_f).round(2) %></td>
+
+<%end %>
+
+<%if @afterdepositadd[member.id]>0 %>
+
+        <td>Already deposited</td>
+
+<%else %>
+
+        <td class="total"  ><%=link_to  'Add deposit',deposits_path({deposit:{year: params[:year],month: params[:month].to_i+1,date: Date.today,balance:  @mebertotaldeposit[member.id]- @membertoalmeal[member.id]*@mealrate[0].to_f,member_id: member.id,deposited_from: "1"}}),method: "post",class: 'btn btn-primary btn-lg',remote: true, data: { confirm: 'Are you sure?' } %></td>
+
+<%end %>
+
+    </tr>
+
+<% end %>
+
+  </tbody>
+
+  <tfoot>
+
+
+  </tfoot>
+
+
+
+
+</table>
+

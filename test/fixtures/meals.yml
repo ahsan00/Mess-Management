@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  quantity: 9.99
+  date: MyString
+  month: MyString
+  year: MyString
+
+two:
+  quantity: 9.99
+  date: MyString
+  month: MyString
+  year: MyString

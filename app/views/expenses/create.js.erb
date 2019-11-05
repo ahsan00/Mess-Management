@@ -1,0 +1,17 @@
+<% if @expense.errors.any? %>
+
+<% else %>
+$("#modal-window").modal('hide');
+$('table tbody').append('<%= j render @expense %>')
+
+$(document).ready(function(){
+    var sum =0;
+    $('tbody').find('tr').each(function(){
+        var balance =parseInt( $(this).find('.amount').text())
+        sum+=balance;
+        console.log(sum)
+    }) ;
+    $("#Totalbalance .Total").html(sum)
+});
+
+<% end %>

@@ -1,0 +1,27 @@
+<% if @deposit.errors.any? %>
+
+<% else %>
+$("#modal-window").modal('hide');
+var trEl = $("#balance-day-<%= @deposit.member_id %>")
+var balance = parseInt(trEl.find('.balance').text());
+balance += parseInt("<%= @deposit.balance %>");
+trEl.find('.balance').html(balance);
+
+var trEl1 = $("#total-<%= @deposit.member_id %>");
+var tdEl = trEl1.find('.total').html("already deposited");
+    $(tdEl).click(function(){
+        $(this).hide();
+    });
+
+$(document).ready(function(){
+  var sum =0;
+ $('tbody').find('tr').each(function(){
+     var balance =parseInt( $(this).find('.balance').text())
+     sum+=balance;
+     console.log(sum)
+ }) ;
+  $("#Totalbalance .Total").html(sum)
+});
+
+
+<% end %>

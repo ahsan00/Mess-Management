@@ -1,0 +1,74 @@
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <%= form_tag '', method: 'get' do  %>
+        <%= select_year(@year.to_i, {:prompt => "Year",:start_year => DateTime.now.year,:end_year => DateTime.now.year - 7},{:name => 'year', :id => 'start-year'}) %>
+        <%= select_month(@month.to_i, {:prompt => "month",use_short_month: true},{:name => 'month', :id => 'start-month'}) %>
+        <%= submit_tag "Search" %>
+      <%end %>
+    </div>
+    <div class="col-4">
+      <%= link_to  'Add Bill', new_billing_path(month: @month,year: @year),{remote: true, data: { toggle: 'modal', target: '#modal-window' }, class: 'btn btn-primary btn-lg'}  %>
+
+    </div>
+    <div class="col-4">
+      <%= link_to  'Show Unpaid',billing_path(id:1,month: @month,year: @year,format: :html), class: 'btn btn-primary btn-lg' %>
+
+    </div>
+
+  </div>
+
+</div>
+
+<table class="table table-striped" >
+
+ <thead>
+ <th scope="col">Serial</th>
+ <th scope="col">Date</th>
+ <th scope="col">purpose</th>
+ <th scope="col">amount</th>
+ <th scope="col">Action</th>
+
+ </thead>
+
+
+
+  <tbody>
+
+  <%= render @billings %>
+
+  <%#@bills.each do |bill| %>
+<!--    <tr>-->
+<!--      <td><%#= bill.id %></td>-->
+<!--      <td><%#= bill.date %></td>-->
+<!--      <td><%#= bill.purpose %></td>-->
+<!--      <td><%#= bill.amount %></td>-->
+      <%#if bill.status ==0 %>
+<!--        <td><%#= link_to 'Unpaid' %></td>-->
+      <%#end %>
+<!--    </tr>-->
+  <%#end %>
+
+  </tbody>
+
+  <tfoot>
+
+  </tfoot>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content modal-width "></div>
+  </div>
+</div>

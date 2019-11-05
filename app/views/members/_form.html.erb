@@ -1,0 +1,24 @@
+<%= form_for(member,:html => {:class => "form-horizontal center"}) do |f| %>
+
+  <div class="form-group">
+  <%= f.label :name,class: "col-md-4 control-label" %>
+  <%= f.text_field :name,class: "form-control" %>
+</div>
+
+  <div class="form-group">
+    <%= f.label :email,class: "col-md-4 control-label" %>
+    <%= f.text_field :email,class: "form-control"%>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :phone,class: "col-md-4 control-label" %>
+    <%= f.text_field :phone,class: "form-control"%>
+  </div>
+  <div class="form-group">
+    <%= f.label :status,class: "col-md-4 control-label" %>
+    <%= f.text_field :status,class: "form-control" %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<%end %>

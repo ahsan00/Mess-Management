@@ -1,0 +1,28 @@
+<% if @expense.errors.any? %>
+
+<% else %>
+$("#modal-window").modal('hide');
+$('table tbody').find('#expense-day-<%= @expense.id %>').replaceWith("<%= j render @expense %>")
+//$('table tbody').find('tr #expense-day-<%= @expense.id %>').replaceWith("1000")
+//var trEl = $("#expense-day-<%= @expense.id %>")
+// $('table tbody').find('trEl').each(function(){
+//    $(this).find('td').each(function(){
+
+
+// });
+
+// });
+
+$(document).ready(function(){
+    var sum =0;
+    $('tbody').find('tr').each(function(){
+        var balance =parseInt( $(this).find('.amount').text())
+        sum+=balance;
+        console.log(sum)
+    }) ;
+    $("#Totalbalance .Total").html(sum)
+});
+
+
+
+<% end %>

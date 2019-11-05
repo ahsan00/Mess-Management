@@ -1,0 +1,2 @@
+$("#modal-window").modal('hide');
+$("#meal-day-<%= params[:meal_day] %>").replaceWith("<%= escape_javascript(render 'meals/meal_item', i: params[:meal_day], members: @members, memberpermeal: @memberpermeal  ).html_safe %>");

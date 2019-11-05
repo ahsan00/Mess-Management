@@ -1,0 +1,132 @@
+<%#= select_tag :year, options_for_select(Member::YEAR_LIST, params[:year]) %>
+<%#= select_tag :month, options_for_select(Member::MONTH_LIST, params[:month])%>
+
+
+<%= form_tag '', method: 'get' do  %>
+  <%= select_year(@year.to_i, {:prompt => "Year",:start_year => DateTime.now.year,:end_year => DateTime.now.year - 7},{:name => 'year', :id => 'start-year'}) %>
+  <%= select_month(@month.to_i, {:prompt => "month",use_short_month: true},{:name => 'month', :id => 'start-month'}) %>
+  <%= submit_tag "Search" %>
+<%end %>
+
+<%#= form_tag  '',method: :get do%>
+  <%#= select_year(Date.today, {:prompt => "Year",:start_year => DateTime.now.year,:end_year => DateTime.now.year - 7, prefix: 'select'},{:field_name => 'year', :id => 'start-year'}) %>
+  <%#= select_month(Date.today, {:prompt => "month",use_short_month: true, prefix: 'select'},{:field_name => 'month', :id => 'start-month'}) %>
+  <%#= submit_tag("Search Job", :id=>"button", :class=>"Test", :name=>"submit") %>
+<%#end%>
+
+ <table class="table table-striped">
+
+    <thead>
+
+      <tr>
+        <th scope="col">Date</th>
+        <% @members.each do |member| %>
+         <th scope="col"><%= link_to member.name,member_path(member) %></th>
+        <% end %>
+        <th scope="col">Action</th>
+
+      </tr>
+    </thead>
+
+
+    <tbody>
+
+      <% for i in 1..@lastday %>
+        <%= render 'meals/meal_item', i: i, memberpermeal: @memberpermeal[i],members: @members %>
+      <%end %>
+    </tbody>
+
+    <tfoot>
+      <tr>
+        <td>Total</td>
+        <% @members .each do |member| %>
+          <td><%= @permealcount[member.id].present? ? @permealcount[member.id] : 0%></td>
+        <%end %>
+        <td><%=@totalmealcount %></td>
+      </tr>
+    </tfoot>
+
+ </table>
+
+  <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content modal-width "></div>
+    </div>
+  </div>
+
+
+<!--  <div class="modal fade" id="mynewmeal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">-->
+<!--    <div class="modal-dialog">-->
+<!--      <div class="modal-content">-->
+
+<!--        <div class="modal-header">-->
+<!--          <h4 class="modal-title" id="myModalLabel">Add Meal</h4>-->
+<!--          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
+
+<!--        </div>-->
+
+<!--        <div class="modal-body">-->
+<!--          <div>-->
+<!--            <label>Date:</label>-->
+<!--            <span class="meal-day"></span>-->
+<!--          </div>-->
+
+            <%#= form_tag meals_path, method: 'post',remote: true do  %>
+
+          <%#@member.each do |member| %>
+<!--              <div class="form-group">-->
+<!--            <label><%#= member.name %></label>-->
+            <%#= text_field_tag 'quantity[]',params[:quantity],class: "form-control",:id =>"quantity" %>
+              <%#= hidden_field_tag  'member_id[]', member.id %>
+            <%#end %>
+<!--            </div>-->
+            <%#= hidden_field_tag :meal_day, '' %>
+            <%#= hidden_field_tag :month, params[:month] %>
+            <%#= hidden_field_tag :year,params[:year] %>
+            <%#= hidden_field_tag :date,'' %>
+
+            <%#= submit_tag "Create", class: "btn btn-primary" %>
+
+            <%#end %>
+<!--        </div>-->
+<!--              <div class="modal-footer">-->
+<!--                <button type="button" class="btn btn-default" data-dismiss="modal" id="mynewpostclose">Close</button>-->
+
+<!--              </div>-->
+
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+
+
+
+<script type="text/javascript">
+  $(function() {
+    $('.add-meal').click(function() {
+        $('#mynewmeal').modal('show');
+      var day = $(this).attr('data-day');
+      var year =  $('#year').val();
+      var month = $('#month').val()
+      console.log (year)
+        console.log (month)
+        var date = year+"-"+month+"-"+day
+        console.log(date)
+        $("#meal_day").val(day);
+        $("#month").val(month);
+        $("#year").val(year);
+        $("#date").val(date);
+      $('.meal-day').html(date);
+    });
+  })
+</script>
+
+
+
+
+
+
+
+
+
+
+

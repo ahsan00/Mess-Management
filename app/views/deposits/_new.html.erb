@@ -1,0 +1,58 @@
+
+
+  <div class="modal-header">
+    <h4 class="modal-title" id="myModalLabel">Deposit History of current month</h4>
+    <button type="button" class="close" data-dismiss="modal">x</button>
+
+  </div>
+
+  <div class="modal-body">
+
+      <table class="table table-striped" >
+            <thead>
+                  <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Balance</th>
+                  </tr>
+
+            </thead>
+
+        <tbody>
+            <% @deposits.each do |deposit| %>
+                   <tr>
+                     <td><%= deposit.date %></td>
+                     <td><%= deposit.balance %></td>
+                   </tr>
+            <%end %>
+        </tbody>
+
+        <tfoot>
+
+        </tfoot>
+
+      </table>
+
+  </div>
+
+  <div class="modal-footer">
+    <%= submit_tag "Save", class: "btn btn-primary" %>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

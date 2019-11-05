@@ -1,0 +1,83 @@
+
+<div class="">
+  <label>Meal Rate:</label>
+  <h1><%= params[:mealrate] %></h1>
+
+</div>
+
+
+
+<table class="table table-striped">
+
+  <thead>
+
+  <tr>
+    <th scope="col">Name</th>
+    <th scope="col">Total meal</th>
+    <th scope="col">Total Expense</th>
+    <th scope="col">Total Deposit</th>
+    <th scope="col">Status</th>
+  </tr>
+
+  </thead>
+
+  <tbody>
+    <%@members.each do |member| %>
+
+    <tr id="total-<%= member.id %>" >
+
+       <td><%= member.name %></td>
+
+       <td><%= @membertoalmeal[member.id] %></td>
+
+       <td><%= (@membertoalmeal[member.id]*params[:mealrate].to_f).round(2) %></td>
+
+         <td><%= @mebertotaldeposit[member.id] %></td>
+
+          <%if @membertoalmeal[member.id]*params[:mealrate].to_f > @mebertotaldeposit[member.id] %>
+
+          <td><%= (@mebertotaldeposit[member.id]- @membertoalmeal[member.id]*params[:mealrate].to_f).round(2) %></td>
+
+          <%else %>
+
+         <td ><%= (@mebertotaldeposit[member.id]- @membertoalmeal[member.id]*params[:mealrate].to_f).round(2) %></td>
+
+          <%end %>
+
+        <%if @afterdepositadd[member.id]>0 %>
+
+         <td>Already deposited</td>
+
+        <%else %>
+
+       <td class="total"  ><%=link_to  'Add deposit',deposits_path({deposit:{year: params[:year],month: params[:month].to_i+1,date: Date.today,balance:  @mebertotaldeposit[member.id]- @membertoalmeal[member.id]*params[:mealrate].to_f,member_id: member.id,deposited_from: "1"}}),method: "post",class: 'btn btn-primary btn-lg',remote: true, data: { confirm: 'Are you sure?' } %></td>
+
+        <%end %>
+
+     </tr>
+
+    <% end %>
+
+  </tbody>
+
+  <tfoot>
+
+
+  </tfoot>
+
+
+
+
+</table>
+
+<script>
+$(document).ready(function(){
+    $('.total').click(function(){
+
+    });
+
+});
+
+
+</script>
+

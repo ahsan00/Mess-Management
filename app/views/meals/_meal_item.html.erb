@@ -1,0 +1,51 @@
+<tr id="meal-day-<%= i %>">
+        <td><%=  i %> </td>
+
+            <%#@meals.each_pair do |date, meals| %>
+            <%#meals.each do |meal| %>
+            <!--         <td><%#=meal.quantity%></td>-->
+            <%#end%>
+
+            <%#end%>
+          <!--      <div id="show">-->
+          <% members.each do |member| %>
+            <td><%= memberpermeal.present? && memberpermeal[member.id].present? ? memberpermeal[member.id] : "---" %></td>
+          <% end %>
+          <!--      </div>-->
+
+
+          <%# @member.each do |member| %>
+          <!--        <td><%#= @memberpermeal[i].present? && @memberpermeal[i][member.id].present? ? @memberpermeal[i][member.id] : 0 %></td>-->
+          <%# end %>
+
+
+          <!--      <td><button type="button" class="btn btn-primary btn-lg add-meal"  data-day="<%#= i %>">-->
+          <!--        Add Meal-->
+          <!--      </button></td>-->
+          <!--         <td><%#= link_to @memberpermeal[i].present? ? 'Edit Meal' :'Add Meal', @memberpermeal[i].present? ? edit_meal_path(i) : new_meal_path(i),{:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-primary btn-lg'} %>-->
+          <!--           <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">-->
+          <!--             <div class="modal-dialog" role="document">-->
+          <!--               <div class="modal-content">-->
+
+          <!--               </div>-->
+          <!--             </div>-->
+          <!--           </div>-->
+          <!--         </td>-->
+          <td>
+            <% if memberpermeal.present? %>
+              <%= link_to  'Edit Meal',edit_meal_path( :id =>i,:month => @month,:year => @year,:memberpermeal => memberpermeal),{:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-primary btn-lg'}  %>
+            <%else %>
+              <%= link_to  'Add Meal', new_meal_path(:day => i, :month => @month, :year => @year),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-primary btn-lg'}  %>
+            <%end %>
+        </td>
+
+
+
+
+        <!--      <td><button type="button" class="btn btn-primary btn-lg add-meal"  data-day="<%#= i %>" >-->
+        <!--        Edit Meal-->
+        <!--      </button></td>-->
+        <!--     <td><button type="button"><%#= link_to 'Press me',edit_meal_path(i)%> </button></td>-->
+
+
+</tr>

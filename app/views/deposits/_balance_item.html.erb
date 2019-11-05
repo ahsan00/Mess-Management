@@ -1,0 +1,36 @@
+
+<!--<tr id="meal-day-<%#= i %>">-->
+
+<!--<tr id="balance-<%#= member_id%>">-->
+
+<!--  <td><%#= member_id %></td>-->
+  <%# members.each do |member| %>
+<!--  <td><%#=member.name %></td>-->
+<!--  <td><%#= membertotalbalnce[member.id].present? ? membertotalbalnce[member.id] : 0 %></td>-->
+
+<!--  <td>-->
+    <%#= link_to  'Add Balance', new_deposit_path( :id =>member.id,:month => params[:month],:year => params[:year]),{:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-primary btn-lg'}  %>
+<!--  </td>-->
+  <%#end %>
+<!--</tr>-->
+<!--<div id=balance-<%# member_id%>>-->
+
+   <%#members.each do |member| %>
+    <%#= membertotalbalnce[member.id].present? ? membertotalbalnce[member.id] : 0 %>
+  <%# end %>
+
+
+<!--</div>-->
+<tr id="balance-day-<%= member.id %>">
+   <td><%=member.id %></td>
+   <td><%=member.name %></td>
+   <td class="balance"><%= membertotalbalnce.present? ? membertotalbalnce : 0 %></td>
+    <td>
+      <%= link_to  'Add Balance', new_deposit_path(member_id: member.id,month: @month,year: @year),{remote: true, data: { toggle: 'modal', target: '#modal-window' }, class: 'btn btn-primary btn-lg'}  %>
+    </td>
+  <td>
+    <%= link_to  'Show History', edit_deposit_path(id: member.id,month: @month,year: @year),{remote: true, data: { toggle: 'modal', target: '#modal-window' }, class: 'btn btn-primary btn-lg'}  %>
+  </td>
+
+
+</tr>

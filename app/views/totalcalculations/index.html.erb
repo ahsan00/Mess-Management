@@ -1,0 +1,190 @@
+
+<!--<div class="row">-->
+<!--  <div class="col-sm-6">-->
+<!--    <div class="card background">-->
+<!--      <div class="card-body">-->
+<!--        <h5 class="card-title">Current Mealrate</h5>-->
+<!--        <p class="card-text">Hello Syftet member don't worry mealrate go down day by day</p>-->
+<!--        <p class="card-text"><%#= @mealrate[0].round(2) %></p>-->
+
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div class="col-sm-6">-->
+<!--    <div class="card background">-->
+<!--      <div class="card-body">-->
+<!--        <h5 class="card-title">Total Meal of this selected month</h5>-->
+<!--        <p class="card-text">Syftet member go go and enjoy food.</p>-->
+<!--        <p class="card-text"><%#= @mealrate[1] %></p>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+
+<!--<div class="aaa">-->
+<!--<div class="row">-->
+<!--      <div class="col-sm-6">-->
+<!--        <div class="card background">-->
+<!--          <div class="card-body">-->
+<!--            <h5 class="card-title">Total Expense till </h5>-->
+<!--            <p class="card-text">Expense should go down</p>-->
+<!--            <p class="card-text"><%#= @mealrate[2] %></p>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--  <div class="col-sm-6">-->
+<!--    <div class="card background">-->
+<!--      <div class="card-body">-->
+<!--        <h5 class="card-title">Remaining Deposit </h5>-->
+<!--        <p class="card-text">Deposit Should be careful</p>-->
+<!--        <p class="card-text"><%#= @mealrate[3] %></p>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+<!--</div>-->
+
+
+
+<!--<div class="aaa">-->
+<!--  <div class="row">-->
+<!--    <div class="col-sm-6">-->
+<!--      <div class="card background">-->
+<!--        <div class="card-body">-->
+<!--          <h5 class="card-title">Total Expense till </h5>-->
+<!--          <p class="card-text">Live Dashboard</p>-->
+<!--          <p class="card-text"><%#= link_to 'Live Dashboard',totalcalculation_path(id: 1,mealrate: @mealrate[0].round(2),month: params[:month],year: params[:year]) %></p>-->
+
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+
+
+<!--  </div>-->
+<!--</div>-->
+
+<!--<div class="four-grids">-->
+<!--  <div class="col-md-3 four-grid">-->
+<!--    <div class="four-agileits">-->
+<!--      <div class="icon">-->
+<!--        <i class="glyphicon glyphicon-user" aria-hidden="true"></i>-->
+<!--      </div>-->
+<!--      <div class="four-text">-->
+<!--        <h3>User</h3>-->
+<!--        <h4> 24,420  </h4>-->
+
+<!--      </div>-->
+
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div class="col-md-3 four-grid">-->
+<!--    <div class="four-agileinfo">-->
+<!--      <div class="icon">-->
+<!--        <i class="glyphicon glyphicon-list-alt" aria-hidden="true"></i>-->
+<!--      </div>-->
+<!--      <div class="four-text">-->
+<!--        <h3>Clients</h3>-->
+<!--        <h4>15,520</h4>-->
+
+<!--      </div>-->
+
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div class="col-md-3 four-grid">-->
+<!--    <div class="four-w3ls">-->
+<!--      <div class="icon">-->
+<!--        <i class="glyphicon glyphicon-folder-open" aria-hidden="true"></i>-->
+<!--      </div>-->
+<!--      <div class="four-text">-->
+<!--        <h3>Projects</h3>-->
+<!--        <h4>12,430</h4>-->
+
+<!--      </div>-->
+
+<!--    </div>-->
+<!--  </div>-->
+
+<!--  <div class="col-md-3 four-grid">-->
+<!--    <div class="four-wthree">-->
+<!--      <div class="icon">-->
+<!--        <i class="glyphicon glyphicon-briefcase" aria-hidden="true"></i>-->
+<!--      </div>-->
+<!--      <div class="four-text">-->
+<!--        <h3>Old Projects</h3>-->
+<!--        <h4>14,430</h4>-->
+
+<!--      </div>-->
+
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div class="clearfix"></div>-->
+<!--</div>-->
+<div class="summary">
+
+<div class="header">
+  <%= form_tag '', method: 'get' do  %>
+    <%#= select_tag :year, options_for_select(Member::YEAR_LIST, params[:year]) %>
+    <%#= select_tag :month, options_for_select(Member::MONTH_LIST, params[:month])%>
+    <%= select_year(Date.today, {:prompt => "Year",:start_year => DateTime.now.year,:end_year => DateTime.now.year - 7, prefix: 'select'},{:field_name => 'year', :id => 'start-year'}) %>
+    <%= select_month(Date.today, {:prompt => "month",use_short_month: true, prefix: 'select'},{:field_name => 'month', :id => 'start-month'}) %>
+    <%= submit_tag "Search" %>
+  <%end %>
+
+</div>
+  <div class="space">
+
+  </div>
+
+<div class="body">
+<div class="row">
+  <div class="col">
+    <div class="card background1" style="max-width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Meal Rate </h5>
+        <p class="card-text"><%= @mealrate[0].present? ? @mealrate[0].round(2) : 0.0 %></p>
+      </div>
+    </div>
+
+
+
+  </div>
+  <div class="col">
+    <div class="card card1" style="max-width: 18rem;">
+
+      <div class="card-body">
+        <h5 class="card-title ">Total Meal</h5>
+        <p class="card-text"><%=@mealrate[1].round(2) %></p>
+      </div>
+    </div>
+
+  </div>
+  <div class="col">
+
+    <div class="card card2 " style="max-width: 18rem;">
+
+      <div class="card-body">
+        <h5 class="card-title">Total Expense till</h5>
+        <p class="card-text"><%=@mealrate[2].round(2) %></p>
+      </div>
+    </div>
+
+
+  </div>
+  <div class="col">
+    <div class="card card3" style="max-width: 18rem;">
+
+      <div class="card-body">
+        <h5 class="card-title">Remaining Deposit</h5>
+        <p class="card-text"><%=@mealrate[3].round(2) %></p>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+</div>
+
+</div>

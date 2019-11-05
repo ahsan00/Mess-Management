@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  purpose: MyString
+  amount: 1
+  date: 2019-10-29
+
+two:
+  purpose: MyString
+  amount: 1
+  date: 2019-10-29
