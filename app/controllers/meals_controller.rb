@@ -14,7 +14,14 @@ class MealsController < ApplicationController
   end
 
   def index
-
+    @members = Member.all
+    @year = params[:year] || Date.today.year
+    @month = params[:month] || Date.today.month
+    @startdate = Date.new( @year.to_i,@month.to_i,1)
+    @lastday = @startdate.end_of_month.day
+    @memberpermeal = Member.dimension(@year,@month,@lastday)
+    @permealcount = Meal.permealcount(@year,@month,@lastday)
+    @totalmealcount = Meal.totalcount(@year,@month,@lastday)
   end
 
   def edit

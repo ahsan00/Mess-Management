@@ -22,12 +22,19 @@ class MembersController < ApplicationController
   end
 
   def create
+
     @member = Member.new(member_params)
-    if @member.save
-      redirect_to @member,notice: 'saved successfully'
-    else
-      render :new
+
+    respond_to do |format|
+      if @member.save
+        format.html { redirect_to members_path }
+      else
+        format.html { render :new }
+      end
     end
+
+
+
 
   end
 
@@ -36,11 +43,19 @@ class MembersController < ApplicationController
   end
 
   def edit
-
+    @member = Member.find_by(id: params[:id])
   end
 
   def update
+    @member = Member.find_by(id: params[:id])
 
+    respond_to do |format|
+      if @member.update(member_params)
+        format.html { redirect_to members_path }
+      else
+        format.html { render :edit }
+      end
+    end
   end
 
   def destroy

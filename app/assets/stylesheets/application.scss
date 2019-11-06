@@ -13,155 +13,39 @@
  *= require_tree .
  *= require_self
  */
-//body,body > p,body > ol,body > ul,body > td { margin: 8px !important}
+body,body > p,body > ol,body > ul,body > td { margin: 8px !important}
 #banner{
-  position: relative;
-  min-height: 120px;
-  background: wheat;
-  padding: 10px;
-  border-bottom: 2px solid whitesmoke;
-  font: small-caps 40px/40px "Times New Roman", serif;
-  /* color: #282; */
-  text-align: center;
+    position: relative;
+    min-height: 120px;
+    background: wheat;
+    padding: 10px;
+    border-bottom: 2px solid whitesmoke;
+    font: small-caps 40px/40px "Times New Roman", serif;
+    text-align: center;
 
-img{
-    top:0;
-    left:0;
-    width:192px;
-    position: absolute;
-}
 }
 
-//#notice {
-//    color: #000 !important;
-//    border: 2px solid red;
-//    padding: 1em;
-//    margin-bottom: 2em;
-//    background-color: #f0f0f0;
-//    font: bold smaller sans-serif;
-//}
-//#notice:empty {
-//    display: none
-//}
-//#columns{
-//  background: darkcyan;
-//  display: flex;
-//  min-height: 800px;
-//#main{
-//    background: white;
-//    padding: 1em;
-//    flex:1;
-//}
-//#side {
-//    padding: 1em 2em;
-//    background: darkcyan;
-//ul {
-//    padding: 0;
-//li {
-//    list-style: none;
-//a {
-//    color: #bfb;
-//    font-size: small;
-//}
-//}
-//}
-//}
-//
-//}
-//#side {
-//    padding: 1em 2em;
-//    background: #141;
-//form, div {
-//    display: inline;
-//}
-//input {
-//    font-size: small;
-//}
-//#cart {
-//    font-size: smaller;
-//    color:
-//            white;
-//table {
-//    border-top: 1px dotted #595;
-//    border-bottom: 1px dotted #595;
-//    margin-bottom: 10px;
-//}
-//}
-//ul {
-//    padding: 0;
-//li {
-//    list-style: none;
-//a {
-//    color: #bfb;
-//    font-size: small;
-//}
-//}
-//}
-//}
-//.depot_form {
-//fieldset {
-//    background: #efe;
-//legend {
-//    color: #dfd;
-//    background: #141;
-//    font-family: sans-serif;
-//    padding: 0.2em 1em;
-//}
-//div {
-//    margin-bottom: 0.3em;
-//}
-//}
-//form {
-//label {
-//    width: 5em;
-//    float: left;
-//    text-align: right;
-//    padding-top: 0.2em;
-//    margin-right: 0.1em;
-//    display: block;
-//}
-//select, textarea, input {
-//    margin-left: 0.5em;
-//}
-//.submit {
-//    margin-left: 4em;
-//}
-//br {
-//    display: none
-//}
-//}
-//}
-//#btn1{
-//  margin-top: 20px;
-//}
-//
-//#btn2{
-//  margin-top: 20px;
-//}
-//
-//#btn3{
-//  margin-top: 20px;
-//}
-//#btn4{
-//  margin-top: 20px;
-//}
-//#btn5{
-//  margin-top: 20px;
-//}
-//
-body {
-  margin: 0;
-  font-family: "Lato", sans-serif;
-}
+#columns{
+  background: #f1f1f1;
+  display: flex;
 
+  #main{
+    background: #F7F7F7;
+    border: 10px solid #fff;
+    padding: 1em;
+    flex:1;
+  }
+
+
+}
 .sidebar {
-  margin: 0;
+
   padding: 0;
   width: 200px;
   background-color: #f1f1f1;
-  position: fixed;
   height: 100%;
   overflow: auto;
+  border-top: 10px solid #fff;
 }
 
 .sidebar a {
@@ -183,35 +67,9 @@ body {
   color: white;
 }
 
-div.content {
-  margin-left: 200px;
-  padding: 1px 16px;
-  height: 1000px;
-  background: #F7F7F7;
-
+.btn-group-lg > .btn, .btn-lg {
+  padding: 2px !important;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  border-radius: .3rem;
 }
-
-@media screen and (max-width: 700px) {
-  .sidebar {
-    width: 100%;
-    height: auto;
-    position: relative;
-  }
-  .sidebar a {float: left;}
-  div.content {margin-left: 0;}
-}
-
-@media screen and (max-width: 400px) {
-  .sidebar a {
-    text-align: center;
-    float: none;
-  }
-}
-
-
-
-
-
-
-
-

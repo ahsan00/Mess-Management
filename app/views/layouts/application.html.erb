@@ -20,8 +20,9 @@
 
   <body>
 
+
   <div id="banner">
-    <h2>Hungry Management</h2>
+        <h2>Hungry Management</h2>
     <span class="title"><%= @page_title %></span>
   </div>
 
@@ -29,21 +30,59 @@
 
     <div class="sidebar">
       <%= link_to 'Dashboard',root_path%>
-      <%= link_to 'Home', members_path%>
-      <%= link_to 'Add Member',new_member_path%>
+      <%= link_to 'Home', meals_path%>
+      <%= link_to 'Add Member',members_path%>
       <%= link_to 'Add Deposit',deposits_path%></a>
       <%=link_to 'Add Expense',expenses_path%>
-      <%=link_to 'Show Summary',totalcalculations_path%>
+      <%=link_to 'Show Summary',dashboards_path%>
       <%=link_to 'Add Billing',billings_path%>
     </div>
 
 
-
-    <div class="content">
+    <div id="main">
       <%= yield %>
     </div>
 
   </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  <div id="banner">-->
+<!--    <h2>Hungry Management</h2>-->
+<!--    <span class="title"><%#= @page_title %></span>-->
+<!--  </div>-->
+
+<!--  <div id="columns">-->
+
+<!--    <div class="sidebar">-->
+      <%#= link_to 'Dashboard',root_path%>
+      <%#= link_to 'Home', meals_path%>
+      <%#= link_to 'Add Member',members_path%>
+<!--      <%#= link_to 'Add Deposit',deposits_path%></a>-->
+      <%#=link_to 'Add Expense',expenses_path%>
+      <%#=link_to 'Show Summary',dashboards_path%>
+      <%#=link_to 'Add Billing',billings_path%>
+<!--    </div>-->
+
+
+
+<!--    <div class="content">-->
+      <%#= yield %>
+<!--    </div>-->
+
+<!--  </div>-->
 
   </body>
 </html>

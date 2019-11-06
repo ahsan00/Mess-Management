@@ -1,7 +1,9 @@
  <%= form_tag '', method: 'get' do  %>
-   <%= select_year(@year.to_i, {:prompt => "Year",:start_year => DateTime.now.year,:end_year => DateTime.now.year - 7},{:name => 'year', :id => 'start-year'}) %>
-   <%= select_month(@month.to_i, {:prompt => "month",use_short_month: true},{:name => 'month', :id => 'start-month'}) %>
-   <%= submit_tag "Search" %>
+   <div class="aaa">
+     <%= select_year(@year.to_i, {:prompt => "Year",:start_year => DateTime.now.year,:end_year => DateTime.now.year - 7},{:name => 'year', :id => 'start-year',:class=>'form-control'}) %>
+     <%= select_month(@month.to_i, {:prompt => "Month",use_short_month: true},{:name => 'month', :id => 'start-month',:class=>'form-control'}) %>
+     <%= submit_tag("Search ", :id=>"button", class: 'btn btn-primary btn-lg', :name=>"submit") %>
+   </div>
   <%end %>
 
 

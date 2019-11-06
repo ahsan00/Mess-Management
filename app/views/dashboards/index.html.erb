@@ -1,14 +1,20 @@
 
 
 <%= form_tag '', method: 'get' do  %>
-  <%= select_year(@year.to_i, {:prompt => "Year",:start_year => DateTime.now.year,:end_year => DateTime.now.year - 7},{:name => 'year', :id => 'start-year'}) %>
-  <%= select_month(@month.to_i, {:prompt => "month",use_short_month: true},{:name => 'month', :id => 'start-month'}) %>
-  <%= submit_tag "Search" %>
+
+  <div class="aaa">
+    <%= select_year(@year.to_i, {:prompt => "Year",:start_year => DateTime.now.year,:end_year => DateTime.now.year - 7},{:name => 'year', :id => 'start-year',:class=>'form-control'}) %>
+    <%= select_month(@month.to_i, {:prompt => "month",use_short_month: true},{:name => 'month', :id => 'start-month',:class=>'form-control'}) %>
+    <%= submit_tag("Search ", :id=>"button", class: 'btn btn-primary btn-lg', :name=>"submit") %>
+
+  </div>
+
 <%end %>
 
 <div class="">
   <label>Meal Rate:</label>
-  <h1><%= @mealrate[0].round(2)%></h1>
+
+      <h1><%= @mealrate[0]>0 ? @mealrate[0].round(2) : 0.0 %></h1>
 
 </div>
 
@@ -37,17 +43,18 @@
 
       <td><%= @membertoalmeal[member.id] %></td>
 
-      <td><%= (@membertoalmeal[member.id]*@mealrate[0].to_f).round(2) %></td>
+      <td><%= (@membertoalmeal[member.id]*@mealrate[0].to_f)>0 ?(@membertoalmeal[member.id]*@mealrate[0].to_f).round(2): 0.0 %></td>
+
 
       <td><%= @mebertotaldeposit[member.id] %></td>
 
-<%if @membertoalmeal[member.id]*@mealrate[0].to_f > @mebertotaldeposit[member.id] %>
+ <%if @membertoalmeal[member.id]*@mealrate[0].to_f > @mebertotaldeposit[member.id] %>
 
-        <td><%= (@mebertotaldeposit[member.id]- @membertoalmeal[member.id]*@mealrate[0].to_f).round(2) %></td>
+        <td><%= (@mebertotaldeposit[member.id]- @membertoalmeal[member.id]*@mealrate[0].to_f)>0 ?(@mebertotaldeposit[member.id]- @membertoalmeal[member.id]*@mealrate[0].to_f).round(2) : 0.0 %></td>
 
 <%else %>
 
-        <td ><%= (@mebertotaldeposit[member.id]- @membertoalmeal[member.id]*@mealrate[0].to_f).round(2) %></td>
+        <td ><%= (@mebertotaldeposit[member.id]- @membertoalmeal[member.id]*@mealrate[0].to_f)>0 ? (@mebertotaldeposit[member.id]- @membertoalmeal[member.id]*@mealrate[0].to_f).round(2) :0.0%></td>
 
 <%end %>
 
@@ -57,7 +64,7 @@
 
 <%else %>
 
-        <td class="total"  ><%=link_to  'Add deposit',deposits_path({deposit:{year: params[:year],month: params[:month].to_i+1,date: Date.today,balance:  @mebertotaldeposit[member.id]- @membertoalmeal[member.id]*@mealrate[0].to_f,member_id: member.id,deposited_from: "1"}}),method: "post",class: 'btn btn-primary btn-lg',remote: true, data: { confirm: 'Are you sure?' } %></td>
+        <td class="total"  ><%=link_to  'Add deposit',deposits_path({deposit:{year: @year,month: @futuremonth.month,date: Date.today,balance:  @mebertotaldeposit[member.id]- @membertoalmeal[member.id]*@mealrate[0].to_f,member_id: member.id,deposited_from: "1"}}),method: "post",class: 'btn btn-primary btn-lg',remote: true, data: { confirm: 'Are you sure?' } %></td>
 
 <%end %>
 
